@@ -19,7 +19,7 @@ TASK_TYPE_PREFERRED = {
 }
 
 class ComputeGovernor:
-    def __init__(self, daily_budget_cu: float = 0):
+    def __init__(self, daily_budget_cu: float = 0.0):
         self.daily_budget_cu = daily_budget_cu  # 0 = unlimited
         self._day_start = time.time()
         self._day_cost = 0.0
