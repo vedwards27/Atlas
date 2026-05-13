@@ -92,6 +92,36 @@ class AtlasRuntimeKernel:
                 content=decision_log,
                 content_rowid=rowid
             );
+            CREATE TABLE IF NOT EXISTS governance_policies (
+                policy_id TEXT PRIMARY KEY,
+                tier INTEGER,
+                category TEXT,
+                name TEXT NOT NULL,
+                body TEXT NOT NULL,
+                content_hash TEXT NOT NULL,
+                authority_level INTEGER DEFAULT 0,
+                active INTEGER DEFAULT 1,
+                created_at DATETIME,
+                created_by TEXT
+            );
+            CREATE TABLE IF NOT EXISTS governance_violations (
+                violation_id TEXT PRIMARY KEY,
+                timestamp DATETIME,
+                policy_id TEXT,
+                agent_id TEXT,
+                action_attempted TEXT,
+                detail TEXT,
+                resolved INTEGER DEFAULT 0
+            );
+            CREATE TABLE IF NOT EXISTS continuity_branches (
+                branch_id TEXT PRIMARY KEY,
+                parent_branch_id TEXT,
+                created_at DATETIME,
+                snapshot_id TEXT,
+                label TEXT,
+                generation INTEGER DEFAULT 0,
+                active INTEGER DEFAULT 1
+            );
         ''')
         conn.commit()
         conn.close()
@@ -313,3 +343,57 @@ class AtlasRuntimeKernel:
     def rebuild_fts(self):
         self._query("INSERT INTO event_fts(event_fts) VALUES('rebuild')", commit=True)
         self._query("INSERT INTO decision_fts(decision_fts) VALUES('rebuild')", commit=True)
+
+    # ── Governance policies ───────────────────────────────────────────────────
+
+    def insert_policy(self, policy_id, tier, category, name, body, authority_level, created_by="SYSTEM"):
+        import hashlib
+        content_hash = hashlib.sha256(body.encode()).hexdigest()[:16]
+        ts = datetime.now().isoformat()
+        self._query(
+            'INSERT OR IGNORE INTO governance_policies (policy_id, tier, category, name, body, content_hash, authority_level, active, created_at, created_by) VALUES (?,?,?,?,?,?,?,1,?,?)',
+            (policy_id, tier, category, name, body, content_hash, authority_level, ts, created_by),
+            commit=True
+        )
+        return content_hash
+
+    def get_policies(self, category=None, active_only=True):
+        if category:
+            return self._query('SELECT policy_id, tier, category, name, body, content_hash, authority_level, active, created_at FROM governance_policies WHERE category=? AND active=? ORDER BY authority_level DESC, tier ASC', (category, 1 if active_only else 0))
+        return self._query('SELECT policy_id, tier, category, name, body, content_hash, authority_level, active, created_at FROM governance_policies WHERE active=? ORDER BY authority_level DESC, tier ASC', (1 if active_only else 0,))
+
+    def deactivate_policy(self, policy_id):
+        self._query('UPDATE governance_policies SET active=0 WHERE policy_id=?', (policy_id,), commit=True)
+
+    def log_violation(self, policy_id, agent_id, action_attempted, detail):
+        vid = f"VIO-{uuid.uuid4().hex[:8].upper()}"
+        ts  = datetime.now().isoformat()
+        self._query(
+            'INSERT INTO governance_violations (violation_id, timestamp, policy_id, agent_id, action_attempted, detail) VALUES (?,?,?,?,?,?)',
+            (vid, ts, policy_id, agent_id, action_attempted, json.dumps(detail) if isinstance(detail, dict) else detail),
+            commit=True
+        )
+        self.log_event("GOVERNANCE_VIOLATION", "KERNEL", {"violation_id": vid, "policy_id": policy_id, "agent_id": agent_id})
+        return vid
+
+    def get_violations(self, resolved=None, limit=50):
+        if resolved is None:
+            return self._query('SELECT violation_id, timestamp, policy_id, agent_id, action_attempted, detail, resolved FROM governance_violations ORDER BY timestamp DESC LIMIT ?', (limit,))
+        return self._query('SELECT violation_id, timestamp, policy_id, agent_id, action_attempted, detail, resolved FROM governance_violations WHERE resolved=? ORDER BY timestamp DESC LIMIT ?', (1 if resolved else 0, limit))
+
+    # ── Continuity branches ───────────────────────────────────────────────────
+
+    def create_branch(self, snapshot_id, label, parent_branch_id=None, generation=0):
+        branch_id = f"BRN-{uuid.uuid4().hex[:8].upper()}"
+        ts = datetime.now().isoformat()
+        self._query(
+            'INSERT INTO continuity_branches (branch_id, parent_branch_id, created_at, snapshot_id, label, generation, active) VALUES (?,?,?,?,?,?,1)',
+            (branch_id, parent_branch_id, ts, snapshot_id, label, generation),
+            commit=True
+        )
+        return branch_id
+
+    def get_branches(self, active_only=True):
+        if active_only:
+            return self._query('SELECT branch_id, parent_branch_id, created_at, snapshot_id, label, generation FROM continuity_branches WHERE active=1 ORDER BY created_at DESC')
+        return self._query('SELECT branch_id, parent_branch_id, created_at, snapshot_id, label, generation FROM continuity_branches ORDER BY created_at DESC')

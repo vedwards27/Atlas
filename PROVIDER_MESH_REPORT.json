@@ -1,0 +1,141 @@
+{
+  "results": [
+    {
+      "test": "fresh provider score is 1.0",
+      "status": "PASS",
+      "detail": "1.0"
+    },
+    {
+      "test": "fresh provider is online",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "error rate degrades score",
+      "status": "PASS",
+      "detail": "0.0"
+    },
+    {
+      "test": "high latency degrades score",
+      "status": "PASS",
+      "detail": "0.7"
+    },
+    {
+      "test": "offline ollama returns online=False",
+      "status": "PASS",
+      "detail": "False"
+    },
+    {
+      "test": "offline ollama score is 0.0",
+      "status": "PASS",
+      "detail": "0.0"
+    },
+    {
+      "test": "offline reason is populated",
+      "status": "PASS",
+      "detail": "HTTPConnectionPool(host='localhost', port=19999): Max retries exceeded with url: /api/tags (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=19999): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it\"))"
+    },
+    {
+      "test": "offline ollama generate raises",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "claude without key returns online=False",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "reason mentions API key",
+      "status": "PASS",
+      "detail": "ANTHROPIC_API_KEY not set"
+    },
+    {
+      "test": "offline provider excluded from routing",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "a provider selected for general",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "reasoning routes to higher-scoring cloud provider",
+      "status": "PASS",
+      "detail": "chose=cloud:smart"
+    },
+    {
+      "test": "fallback provider used on primary failure",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "response from fallback",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "tried list shows both providers",
+      "status": "PASS",
+      "detail": "['fail:primary', 'ok:fallback']"
+    },
+    {
+      "test": "offline_capable=True when local online",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "cloud listed as down",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "local listed as online",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "degraded_mode=True (no cloud)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "offline generation succeeds via local",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "no fallback needed (local worked)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "routing log has entries",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "log entry has chosen field",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "log entry has rationale",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "log entry has all_candidates",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "log entry has task_type",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "passed": 27,
+  "failed": 0
+}

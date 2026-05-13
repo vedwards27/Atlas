@@ -1,0 +1,132 @@
+{
+  "results": [
+    {
+      "test": "directive survives restart",
+      "status": "PASS",
+      "detail": "DIR-897BAF73"
+    },
+    {
+      "test": "task survives restart",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "decision survives restart",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "snapshot survives restart",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "hydration state loaded on restart",
+      "status": "PASS",
+      "detail": "active=18"
+    },
+    {
+      "test": "parent appears in grandchild lineage",
+      "status": "PASS",
+      "detail": "lineage=['DIR-04400D19', 'DIR-3225E950', 'DIR-B235CD22']"
+    },
+    {
+      "test": "child appears in grandchild lineage",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "grandchild is current node",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "lineage depth is 3",
+      "status": "PASS",
+      "detail": "depth=3"
+    },
+    {
+      "test": "completed directive state persisted",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "decisions recorded",
+      "status": "PASS",
+      "detail": "count=2"
+    },
+    {
+      "test": "decision outcome updated",
+      "status": "PASS",
+      "detail": "outcome=COMPLETED in 120ms"
+    },
+    {
+      "test": "decision without outcome has None",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "timeline contains events",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "timeline contains decisions",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "timeline is reverse-chronological",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "FTS finds unique event token",
+      "status": "PASS",
+      "detail": "total=2"
+    },
+    {
+      "test": "FTS finds decision with 'llama'",
+      "status": "PASS",
+      "detail": "total=2"
+    },
+    {
+      "test": "snapshot has id",
+      "status": "PASS",
+      "detail": "SNAP-06921F4C"
+    },
+    {
+      "test": "snapshot has event count",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "snapshot retrievable",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "get_latest_snapshot works",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "summary has all required keys",
+      "status": "PASS",
+      "detail": "missing=set()"
+    },
+    {
+      "test": "directive counts are integers",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "event total is integer",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "passed": 25,
+  "failed": 0,
+  "total": 25
+}

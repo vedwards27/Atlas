@@ -1,0 +1,312 @@
+{
+  "results": [
+    {
+      "test": "main branch exists",
+      "status": "PASS",
+      "detail": "count=1"
+    },
+    {
+      "test": "genesis has generation 0",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "genesis has no parent",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "genesis branch_id stored in engine",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "genesis is idempotent (no duplicate root)",
+      "status": "PASS",
+      "detail": "count=1"
+    },
+    {
+      "test": "gen1 created",
+      "status": "PASS",
+      "detail": "gen1"
+    },
+    {
+      "test": "gen2 created",
+      "status": "PASS",
+      "detail": "gen2"
+    },
+    {
+      "test": "gen3 created",
+      "status": "PASS",
+      "detail": "gen3"
+    },
+    {
+      "test": "gen1 generation is 1",
+      "status": "PASS",
+      "detail": "1"
+    },
+    {
+      "test": "gen2 generation is 2",
+      "status": "PASS",
+      "detail": "2"
+    },
+    {
+      "test": "gen3 generation is 3",
+      "status": "PASS",
+      "detail": "3"
+    },
+    {
+      "test": "gen1 has snapshot_id",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "gen3 has summary data",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "tree contains gen1",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "tree contains gen3",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "chain length is 4 (genesis+lev1+lev2+lev3)",
+      "status": "PASS",
+      "detail": "4"
+    },
+    {
+      "test": "chain starts at genesis (gen 0)",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "test": "chain ends at lev3",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "chain is ordered oldest-first",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "orphan branch_id returns empty chain",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "replay has snapshot_id",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "replay has events_replayed count",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "replay events_replayed > 0",
+      "status": "PASS",
+      "detail": "513"
+    },
+    {
+      "test": "reconstructed_state present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "baseline_summary present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "tasks reconstructed",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "workers reconstructed",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "missing snapshot returns error key",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "TSK-AFTER absent when replayed before its creation",
+      "status": "PASS",
+      "detail": "found=False"
+    },
+    {
+      "test": "TSK-AFTER present when replayed to now",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "reconstruct_at returns error when no prior snapshot",
+      "status": "PASS",
+      "detail": "no snapshot exists before target_timestamp"
+    },
+    {
+      "test": "reconstruct_at succeeds with snapshot",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "test": "result has reconstruction_method",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "result has target_timestamp",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "result has snapshot_id",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "simulate_replay has steps",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "step_count > 0",
+      "status": "PASS",
+      "detail": "520"
+    },
+    {
+      "test": "unique_event_types present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "from_event_id matches",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "to_event_id matches",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "step has event_id",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "step has simulated_action",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "step has type",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "empty range returns 0 steps",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "packet has generated_at",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "packet has version",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "packet has operational_summary",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "packet has active_directives",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "packet has continuity_branches",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "packet has recent_decisions",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "packet has governance_policies",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "packet has recovery_instructions",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "recovery_instructions has 5 steps",
+      "status": "PASS",
+      "detail": "5"
+    },
+    {
+      "test": "step_1 mentions server.py",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "packet persisted to kernel_state",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "stored packet has version",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "checkpointed branch survives restart",
+      "status": "PASS",
+      "detail": "BRN-60CC22D7"
+    },
+    {
+      "test": "lineage chain rebuilt after restart",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "genesis branch_id re-hydrated",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "all mapped event types produce filled templates",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "unknown event type returns fallback string",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "passed": 61,
+  "failed": 0,
+  "total": 61
+}

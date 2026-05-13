@@ -1,0 +1,402 @@
+{
+  "results": [
+    {
+      "test": "all law levels represented",
+      "status": "PASS",
+      "detail": "{'L4_ADVISORY', 'L1_ABSOLUTE', 'L3_OPERATIONAL', 'L2_SOVEREIGN'}"
+    },
+    {
+      "test": "all violation actions used",
+      "status": "PASS",
+      "detail": "{'WARN', 'BLOCK', 'AUDIT'}"
+    },
+    {
+      "test": "all policies have policy_id",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "all policies have tier=22",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "all policies have body",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "L1 authority > L2",
+      "status": "PASS",
+      "detail": "1000 > 800"
+    },
+    {
+      "test": "L2 authority > L3",
+      "status": "PASS",
+      "detail": "800 > 600"
+    },
+    {
+      "test": "L3 authority > L4",
+      "status": "PASS",
+      "detail": "600 > 200"
+    },
+    {
+      "test": "constitution status is CONSTITUTION_ACTIVE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "policy_count >= 10",
+      "status": "PASS",
+      "detail": "13"
+    },
+    {
+      "test": "integrity_ok on fresh boot",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "test": "load_count is 1",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "policy count unchanged after second boot",
+      "status": "PASS",
+      "detail": "13 -> 13"
+    },
+    {
+      "test": "hierarchy is non-empty",
+      "status": "PASS",
+      "detail": "13"
+    },
+    {
+      "test": "hierarchy sorted by authority descending",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "L1_ABSOLUTE policies present",
+      "status": "PASS",
+      "detail": "3"
+    },
+    {
+      "test": "all L1 have authority_level 1000",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "L1 violation_action is BLOCK",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "L4_ADVISORY policies present",
+      "status": "PASS",
+      "detail": "1"
+    },
+    {
+      "test": "L4 violation_action is AUDIT",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "blocked: 'rm -rf /home/user'",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "violation logged for: 'rm -rf /home/user'",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "blocked: 'please DROP TABLE users cascad'",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "violation logged for: 'please DROP TABLE us'",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "blocked: 'format disk C:'",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "violation logged for: 'format disk C:'",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "blocked: 'DELETE FROM everything'",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "violation logged for: 'DELETE FROM everythi'",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "blocked: 'dd if=/dev/zero of=/dev/sda'",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "violation logged for: 'dd if=/dev/zero of=/'",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "safe prompt is allowed",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "safe prompt has no violations",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "over-budget request is blocked",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "under-budget request is allowed",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "action='drop_table' is blocked",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "action='truncate' is blocked",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "action='delete_events' is blocked",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "action='wipe_snapshots' is blocked",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "result has 'allowed' key",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "result has 'violations' list",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "result has 'blocking_policy'",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "result has 'actor'",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "result has 'evaluated_at'",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "blocking_policy is a string",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "violation has policy_id",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "violation has law_level",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "violation has action",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "violation has reason",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "violation has violation_id",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "EVENT_LEDGER wins arbitration",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "method is event_ledger_authority",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "confidence is 1.0",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "highest authority wins (no ledger)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "method is authority_level",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "most recent wins on tie",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "method is recency",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "empty claims returns no winner",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "dangerous task is blocked",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "task moved to BLOCKED state in DB",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "safe task is allowed",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "safe task remains QUEUED",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "violation count increased",
+      "status": "PASS",
+      "detail": "40 -> 42"
+    },
+    {
+      "test": "GOVERNANCE_VIOLATION event logged",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "session_violations counter increments",
+      "status": "PASS",
+      "detail": "2"
+    },
+    {
+      "test": "report has generated_at",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "report tier is 22",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "report has constitution_status",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "report has law_hierarchy",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "report has L1_ABSOLUTE entries",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "report has arbitration_model",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "report has enforcement_chain",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "enforcement_chain has 5 steps",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "report has policy_count_by_level",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "sovereignty report persisted to kernel_state",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "stored report has tier 22",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "SOVEREIGNTY_REPORT_GENERATED event logged",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "no tamper on fresh boot",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "test": "tamper detected after body mutation",
+      "status": "PASS",
+      "detail": "1"
+    },
+    {
+      "test": "tampered policy is CONST-L1-001",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "passed": 79,
+  "failed": 0,
+  "total": 79
+}

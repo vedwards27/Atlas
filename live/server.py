@@ -13,15 +13,21 @@ from kernel import AtlasRuntimeKernel
 from memory import MemoryEngine
 from providers.mesh import ProviderMesh
 from survivability import SurvivabilityEngine
+from observer import RuntimeObserver
+from continuity import ContinuityEngine
+from constitution import GovernanceConstitution
 
 DB_PATH = str(Path(__file__).parent / "atlas_runtime.db")
 DIST_PATH = Path(__file__).parent / "dashboard" / "dist"
 
-kernel       = AtlasRuntimeKernel(db_path=DB_PATH)
-memory       = MemoryEngine(kernel)
-mesh         = ProviderMesh(kernel=kernel)
+kernel        = AtlasRuntimeKernel(db_path=DB_PATH)
+memory        = MemoryEngine(kernel)
+mesh          = ProviderMesh(kernel=kernel)
 survivability = SurvivabilityEngine(kernel, memory, DB_PATH)
-_start_time  = time.time()
+observer      = RuntimeObserver(kernel, memory, DB_PATH)
+continuity_engine = ContinuityEngine(kernel, memory)
+constitution      = GovernanceConstitution(kernel, memory)
+_start_time   = time.time()
 
 # On startup: restore any tasks/workers left RUNNING/ACTIVE from a prior crash
 survivability.restore_interrupted_tasks()
@@ -308,6 +314,58 @@ def get_recovery_events(limit: int = 20):
     return [{"id": r[0], "timestamp": r[1], "type": r[2], "source": r[3], "payload": json.loads(r[4])} for r in rows]
 
 
+# ── Continuity Preservation (Tier 21) ────────────────────────────────────────
+
+@app.get("/api/continuity/branches")
+def get_branches():
+    return continuity_engine.get_branch_tree()
+
+@app.get("/api/continuity/branches/{branch_id}/lineage")
+def get_branch_lineage(branch_id: str):
+    return continuity_engine.get_lineage_chain(branch_id)
+
+@app.post("/api/continuity/checkpoint")
+def continuity_checkpoint(body: dict = {}):
+    parent = body.get("parent_branch_id")
+    label  = body.get("label", "manual")
+    return continuity_engine.checkpoint(label=label, parent_branch_id=parent)
+
+@app.get("/api/continuity/replay/{snapshot_id}")
+def replay_snapshot(snapshot_id: str, until: str = None):
+    return continuity_engine.replay_from_snapshot(snapshot_id, until_timestamp=until)
+
+@app.get("/api/continuity/reconstruct")
+def reconstruct_at(timestamp: str):
+    return continuity_engine.reconstruct_at(timestamp)
+
+@app.get("/api/continuity/simulate")
+def simulate_replay(from_id: int = 1, to_id: int = 50):
+    return continuity_engine.simulate_replay(from_id, to_id)
+
+@app.get("/api/continuity/packet")
+def get_institutional_packet():
+    return continuity_engine.export_institutional_packet()
+
+
+# ── Self-Observability (Tier 20) ──────────────────────────────────────────────
+
+@app.get("/api/observer/report")
+def get_observer_report():
+    return observer.run_once()
+
+@app.get("/api/observer/latest")
+def get_observer_latest():
+    return observer.get_latest_report()
+
+@app.get("/api/observer/coherence")
+def get_coherence():
+    return observer.get_coherence_trend()
+
+@app.get("/api/observer/history")
+def get_observer_history(limit: int = 10):
+    return observer.get_finding_history(limit=limit)
+
+
 # ── Survivability (Tier 19) ───────────────────────────────────────────────────
 
 @app.get("/api/survivability/integrity")
@@ -347,6 +405,53 @@ def restore_queue():
     return {"restored": count}
 
 
+# ── Governance Constitution (Tier 22) ────────────────────────────────────────
+
+@app.get("/api/constitution/status")
+def get_constitution_status():
+    return constitution.get_status()
+
+@app.get("/api/constitution/hierarchy")
+def get_law_hierarchy():
+    return constitution.get_law_hierarchy()
+
+@app.get("/api/constitution/policies/{law_level}")
+def get_policies_by_level(law_level: str):
+    allowed = {"L1_ABSOLUTE", "L2_SOVEREIGN", "L3_OPERATIONAL", "L4_ADVISORY"}
+    if law_level not in allowed:
+        raise HTTPException(status_code=400, detail=f"law_level must be one of {allowed}")
+    return constitution.get_policies_by_level(law_level)
+
+@app.post("/api/constitution/check")
+def check_permission(body: dict):
+    action  = body.get("action", "").strip()
+    payload = body.get("payload", {})
+    actor   = body.get("actor", "AGENT")
+    if not action:
+        raise HTTPException(status_code=400, detail="action required")
+    return constitution.check_permission(action=action, payload=payload, actor=actor)
+
+@app.post("/api/constitution/arbitrate")
+def arbitrate_truth(body: dict):
+    claims = body.get("claims", [])
+    if not isinstance(claims, list):
+        raise HTTPException(status_code=400, detail="claims must be a list")
+    return constitution.arbitrate_truth(claims)
+
+@app.get("/api/constitution/violations")
+def get_constitution_violations(limit: int = 20):
+    rows = kernel.get_violations(limit=limit)
+    return [
+        {"id": r[0], "timestamp": r[1], "policy_id": r[2], "actor": r[3],
+         "action_attempted": r[4], "detail": r[5], "resolved": bool(r[6])}
+        for r in rows
+    ]
+
+@app.get("/api/constitution/sovereignty")
+def get_sovereignty_report():
+    return constitution.generate_sovereignty_report()
+
+
 # ── Serve built dashboard (production) ───────────────────────────────────────
 
 if DIST_PATH.exists():
@@ -355,4 +460,4 @@ if DIST_PATH.exists():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("server:app", host="0.0.0.0", port=8081, reload=False)
+    uvicorn.run("server:app", host="0.0.0.0", port=8082, reload=False)
