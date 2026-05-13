@@ -1,0 +1,202 @@
+{
+  "results": [
+    {
+      "test": "orphaned RUNNING tasks detected",
+      "status": "PASS",
+      "detail": "2"
+    },
+    {
+      "test": "tasks re-queued",
+      "status": "PASS",
+      "detail": "['QUEUED', 'QUEUED']"
+    },
+    {
+      "test": "TASK_RESTORED_ON_STARTUP event logged",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "zombie workers detected",
+      "status": "PASS",
+      "detail": "7"
+    },
+    {
+      "test": "zombie workers marked STALLED",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "checkpoint created",
+      "status": "PASS",
+      "detail": "SNAP-719DBBAF"
+    },
+    {
+      "test": "checkpoint_count incremented",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "snapshot survives restart",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "get_latest_snapshot returns data",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "latest snapshot has event count",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "integrity_check passes on healthy DB",
+      "status": "PASS",
+      "detail": "{'ok': True, 'integrity_check': 'ok', 'missing_tables': [], 'score': 1.0}"
+    },
+    {
+      "test": "score is 1.0 on clean DB",
+      "status": "PASS",
+      "detail": "1.0"
+    },
+    {
+      "test": "no missing tables",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "test": "no drift when event just logged",
+      "status": "PASS",
+      "detail": "{'drift': False, 'last_event': '2026-05-13T19:26:22.843677', 'age_seconds': 0}"
+    },
+    {
+      "test": "last_event is populated",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "age_seconds is small",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "test": "duplicate execution_agent detected",
+      "status": "PASS",
+      "detail": "['execution_agent']"
+    },
+    {
+      "test": "ok=False when duplicates present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "fingerprint is a string",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "fingerprint is 16 chars",
+      "status": "PASS",
+      "detail": "16"
+    },
+    {
+      "test": "fingerprint changes after state mutation",
+      "status": "PASS",
+      "detail": "28eafaf717bc1ff1 vs 2004f1dba97d6f13"
+    },
+    {
+      "test": "score is a number",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "score has grade",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "score has task_counts",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "score has worker_states",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "healthy system scores >= 80",
+      "status": "PASS",
+      "detail": "83"
+    },
+    {
+      "test": "simulation:queue_corruption recovered",
+      "status": "PASS",
+      "detail": "task state is now: QUEUED"
+    },
+    {
+      "test": "simulation:stale_worker recovered",
+      "status": "PASS",
+      "detail": "worker state: STALLED"
+    },
+    {
+      "test": "simulation:checkpoint_restore recovered",
+      "status": "PASS",
+      "detail": "snapshot retrievable: True"
+    },
+    {
+      "test": "simulation:integrity_check recovered",
+      "status": "PASS",
+      "detail": "integrity_check: {'ok': True, 'integrity_check': 'ok', 'missing_tables': [], 'score': 1.0}"
+    },
+    {
+      "test": "simulation:duplicate_root recovered",
+      "status": "PASS",
+      "detail": "duplicates detected (operator must deregister one)"
+    },
+    {
+      "test": "FAILURE_SIMULATION events logged",
+      "status": "PASS",
+      "detail": "10"
+    },
+    {
+      "test": "directive survives process death",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "task survives process death",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "decision survives process death",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "checkpoint snapshot survives process death",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "hydration loaded without manual step",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "DB integrity intact after restart",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "integrity score available after restart",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "passed": 39,
+  "failed": 0,
+  "total": 39
+}

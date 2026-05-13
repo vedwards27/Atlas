@@ -1,0 +1,161 @@
+{
+  "results": [
+    {
+      "test": "stale telemetry detected",
+      "status": "PASS",
+      "detail": "findings=1"
+    },
+    {
+      "test": "severity is WARN",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "dead worker detected",
+      "status": "PASS",
+      "detail": "found=1"
+    },
+    {
+      "test": "severity is ERROR",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "duplicate root detected",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "severity is CRITICAL",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "stuck task detected",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "severity is ERROR",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "action suggests requeue",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "no checkpoint detected on fresh DB",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "severity is CRITICAL",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "no gap after fresh checkpoint",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "test": "no integrity failures on healthy DB",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "test": "governance_empty detected when no policies loaded",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "severity is ERROR",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "no tamper detected on fresh policy",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "test": "no governance_empty when policy loaded",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "test": "empty findings = 100.0 coherence",
+      "status": "PASS",
+      "detail": "100.0"
+    },
+    {
+      "test": "one WARN deducts 5",
+      "status": "PASS",
+      "detail": "95.0"
+    },
+    {
+      "test": "one CRITICAL deducts 30",
+      "status": "PASS",
+      "detail": "70.0"
+    },
+    {
+      "test": "score floors at 0.0",
+      "status": "PASS",
+      "detail": "0.0"
+    },
+    {
+      "test": "report has generated_at",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "report has coherence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "report has by_severity",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "report has cycle count",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "report written to kernel_state",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "coherence trend has current score",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "coherence trend has trend direction",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "high DLQ count flagged",
+      "status": "PASS",
+      "detail": "dlq_count=14"
+    },
+    {
+      "test": "blocked tasks reported",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "blocked finding is INFO severity",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "passed": 31,
+  "failed": 0
+}

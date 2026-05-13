@@ -1,0 +1,127 @@
+{
+  "results": [
+    {
+      "test": "agent registers in worker_registry",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "worker_id present in DB",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "agent ran",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "agent offline after shutdown",
+      "status": "PASS",
+      "detail": "OFFLINE"
+    },
+    {
+      "test": "session directive created",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "planner created tasks for directive",
+      "status": "PASS",
+      "detail": "tasks=2"
+    },
+    {
+      "test": "DIRECTIVE_PLANNED event logged",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "planner logged routing decision",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "failed task requeued",
+      "status": "PASS",
+      "detail": "QUEUED"
+    },
+    {
+      "test": "retry_count incremented",
+      "status": "PASS",
+      "detail": "1"
+    },
+    {
+      "test": "exhausted task moved to DLQ",
+      "status": "PASS",
+      "detail": "DLQ"
+    },
+    {
+      "test": "dangerous task blocked",
+      "status": "PASS",
+      "detail": "BLOCKED"
+    },
+    {
+      "test": "TASK_BLOCKED event logged",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "verifier ran without error",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "verified count incremented",
+      "status": "PASS",
+      "detail": "2"
+    },
+    {
+      "test": "diagnostics report generated",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "report has queue key",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "report has latency key",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "report has db key",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "report written to kernel_state",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "telemetry survives restart",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "telemetry has agent_id",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "test": "lineage has 3 decisions across agents",
+      "status": "PASS",
+      "detail": "3"
+    },
+    {
+      "test": "multiple agents appear in lineage",
+      "status": "PASS",
+      "detail": "{'execute task=TSK-DAEE9E87', 'plan', 'execute task=TSK-031B7290'}"
+    }
+  ],
+  "passed": 24,
+  "failed": 0,
+  "total": 24
+}
